@@ -158,7 +158,6 @@ argument_parsing()
 
 			-h | --help)
 				usage
-				exit 1
 				;;
 			*)
 				error_msg "'${param}' is not a defined option"

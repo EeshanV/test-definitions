@@ -31,7 +31,9 @@ stop_f="${LOGROOT}/stop"
 
 start_bootchart(){
     echo "${BOOTCHART_TIME}" > ${start_f}
-    if [ $? -ne 0 ]; then
+    local ret
+    ret=$?
+    if [ $ret -ne 0 ]; then
         echo "start_bootchart: fail"
     else
         echo "start_bootchart: pass"
@@ -40,7 +42,9 @@ start_bootchart(){
 
 enabled_bootchart(){
     touch ${enabled_f}
-    if [ $? -ne 0 ]; then
+    local ret
+    ret=$?
+    if [ $ret -ne 0 ]; then
         echo "enabled_bootchart: fail"
     else
         echo "enabled_bootchart: pass"
@@ -49,13 +53,18 @@ enabled_bootchart(){
 
 stop_bootchart(){
     echo 1 > ${stop_f}
-    if [ $? -ne 0 ]; then
+    local ret
+    ret=$?
+    if [ $ret -ne 0 ]; then
         echo "stop_bootchart: fail"
     else
         echo "stop_bootchart: pass"
     fi
+    
     rm -fr ${start_f} ${enabled_f}
-    if [ $? -ne 0 ]; then
+    local rm_ret
+    rm_ret=$?
+    if [ $rm_ret -ne 0 ]; then
         echo "rm_start_file: fail"
     else
         echo "rm_start_file: pass"

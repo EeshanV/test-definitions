@@ -154,7 +154,7 @@ statistic(){
             continue
         fi
         new_key=$(echo "$line"|cut -d, -f1)
-        measurement_units=$(echo "$line"|cut -d, -f${field_no})
+        measurement_units=$(echo "$line"|cut -d, -f"${field_no}")
         if echo "${measurement_units}"|grep -q '~'; then
             value=$(echo "${measurement_units}"|cut -d~ -f1)
         else
@@ -168,7 +168,7 @@ statistic(){
             min=$(f_min "$min" "$value")
         else
             if [ "X${old_key}" != "X" ]; then
-                if [ "${count}" -ge 4 ]; then
+                if [ "$count" -ge 4 ]; then
                     average=$(echo "${total},${max},${min},$count"|awk -F, '{printf "%.2f",($1-$2-$3)/($4-2);}')
                 else
                     average=$(echo "${total},$count"|awk -F, '{printf "%.2f",$1/$2;}')
@@ -192,7 +192,7 @@ statistic(){
         fi
     done < "${f_data}.sort"
     if [ "X${new_key}" != "X" ]; then
-        if [ $count -ge 4 ]; then
+        if [ "$count" -ge 4 ]; then
             average=$(echo "${total},${max},${min},$count"|awk -F, '{printf "%.2f",($1-$2-$3)/($4-2);}')
         else
             average=$(echo "${total},$count"|awk -F, '{printf "%.2f",$1/$2;}')

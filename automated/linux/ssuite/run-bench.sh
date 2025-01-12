@@ -160,7 +160,7 @@ run_test() {
 		HOME_DIR=~
 	fi
 
-	rm -f ${HOME_DIR}/.S-config.sh
+	rm -f "${HOME_DIR}"/.S-config.sh
 
 	cd "$TEST_DIR"/run_multiple_benchmarks/ || exit 1
 	./run_main_benchmarks.sh "$1" "" "" "" "${ONLY_READS}" "" \

@@ -137,7 +137,6 @@ while getopts "M:T:S:b:d:g:e:i:s:v:R:r:u:p:t:c:n:" arg; do
         ;;
      *)
         usage
-        error_msg "No flag ${OPTARG}"
         ;;
   esac
 done

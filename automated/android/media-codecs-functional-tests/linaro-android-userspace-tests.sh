@@ -449,7 +449,7 @@ run_video_codec_h264_dec()
 
 	echo "${TAG}: ${NAME}: PASSED"
 	echo "[${TAG}]: test passed"
-	return $?
+	return 0
 }
 
 run_video_codec_h264_enc()
@@ -629,7 +629,7 @@ run_video_codec_h263_dec()
 
 	echo "${TAG}: ${NAME}: PASSED"
 	echo "[${TAG}]: test passed"
-	return $?
+	return 0
 }
 
 run_video_codec_h263_enc()
@@ -717,7 +717,7 @@ run_video_codec_h263_enc()
 
 	echo "${TAG}: ${NAME}: PASSED"
 	echo "[${TAG}]: test passed"
-	return $?
+	return 0
 }
 
 run_tests() {
@@ -778,4 +778,5 @@ else
 fi
 
 run_tests
-return $?
+ret=$?
+return ${ret}
